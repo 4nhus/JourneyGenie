@@ -10,8 +10,10 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        GlobeView()
-            .edgesIgnoringSafeArea(.all)
+        GlobeView { coordinate in
+            print("Map tapped at coordinate: \(coordinate.latitude), \(coordinate.longitude)")
+        }
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
