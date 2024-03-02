@@ -16,3 +16,7 @@ Then, send requests to `http://127.0.0.1:5000`.
 1. Run the virtual environment using steps 1-3 above.
 2. Run `pip3 install {package_name}`
 3. When done, run `pip3 freeze > requirements.txt` 
+
+### Saving OpenAI tokens
+1. Go to `journey.py` and modify `lat`, `long` and `time` according to the desired query.
+2. Chuck the prompt into ChatGPT.
