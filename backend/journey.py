@@ -1,6 +1,5 @@
 from dotenv import load_dotenv
 from openai import OpenAI
-from exceptions.open_api_error import OpenApiError
 
 
 def get_prompt(latitude: float, longitude: float, weather: str) -> str:
@@ -19,18 +18,10 @@ def get_journey(latitude: float, longitude: float, date: int) -> str:
 
     completion = client.chat.completions.create(
         model="gpt-3.5-turbo",
-        messages={"role": "user", "content": prompt}
+        messages=[{"role": "user", "content": prompt}]
     )
 
-    print(completion)
-
-    print(completion.choices[0].message.content)
-
-    # if completion.status_code == 200:
-    #     completion =
-    #     return completion
-    # else:
-    #     raise OpenApiError("Error: Failed to generate results")
+    return completion.choices[0].message.content
 
 
 if __name__ == '__main__':
