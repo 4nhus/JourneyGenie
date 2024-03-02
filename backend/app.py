@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 import json
+from journey import get_journey
 
 app = Flask(__name__)
 
@@ -22,7 +23,9 @@ def journey():
     with open("sample_journey.txt") as f:
         return jsonify(json.loads(f.read()))
 
-    # return jsonify(get_journey(latitude, longitude, date))
+    # res = get_journey(latitude, longitude, date)
+    # print(res)
+    # return res
 
 
 if __name__ == '__main__':
