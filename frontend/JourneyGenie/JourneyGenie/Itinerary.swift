@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Itinerary {
+struct Itinerary: Identifiable {
+    var id = UUID()
     let morning: [ItineraryItem]
     let afternoon: [ItineraryItem]
     let evening: [ItineraryItem]

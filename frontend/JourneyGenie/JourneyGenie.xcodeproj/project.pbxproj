@@ -16,6 +16,9 @@
 		965972382B92C570000D3070 /* GlobeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965972352B92C570000D3070 /* GlobeView.swift */; };
 		9659723A2B92CEAC000D3070 /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965972392B92CEAC000D3070 /* Itinerary.swift */; };
 		9659723C2B92CEC3000D3070 /* ItineraryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9659723B2B92CEC3000D3070 /* ItineraryItem.swift */; };
+		9659723E2B92DC56000D3070 /* ItinerariesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9659723D2B92DC56000D3070 /* ItinerariesView.swift */; };
+		965972402B92DC7D000D3070 /* ItineraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9659723F2B92DC7D000D3070 /* ItineraryView.swift */; };
+		965972422B92E03A000D3070 /* JourneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965972412B92E03A000D3070 /* JourneyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,9 @@
 		965972352B92C570000D3070 /* GlobeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobeView.swift; sourceTree = "<group>"; };
 		965972392B92CEAC000D3070 /* Itinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
 		9659723B2B92CEC3000D3070 /* ItineraryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryItem.swift; sourceTree = "<group>"; };
+		9659723D2B92DC56000D3070 /* ItinerariesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItinerariesView.swift; sourceTree = "<group>"; };
+		9659723F2B92DC7D000D3070 /* ItineraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryView.swift; sourceTree = "<group>"; };
+		965972412B92E03A000D3070 /* JourneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,9 @@
 				9659723B2B92CEC3000D3070 /* ItineraryItem.swift */,
 				9659721F2B91E11D000D3070 /* JourneyGenieApp.swift */,
 				965972212B91E11D000D3070 /* ContentView.swift */,
+				965972412B92E03A000D3070 /* JourneyView.swift */,
+				9659723D2B92DC56000D3070 /* ItinerariesView.swift */,
+				9659723F2B92DC7D000D3070 /* ItineraryView.swift */,
 				965972232B91E11F000D3070 /* Assets.xcassets */,
 				965972252B91E11F000D3070 /* Preview Content */,
 			);
@@ -154,9 +163,12 @@
 			files = (
 				965972222B91E11D000D3070 /* ContentView.swift in Sources */,
 				9659723A2B92CEAC000D3070 /* Itinerary.swift in Sources */,
+				9659723E2B92DC56000D3070 /* ItinerariesView.swift in Sources */,
 				9659723C2B92CEC3000D3070 /* ItineraryItem.swift in Sources */,
 				965972372B92C570000D3070 /* Request.swift in Sources */,
+				965972402B92DC7D000D3070 /* ItineraryView.swift in Sources */,
 				965972382B92C570000D3070 /* GlobeView.swift in Sources */,
+				965972422B92E03A000D3070 /* JourneyView.swift in Sources */,
 				965972362B92C570000D3070 /* Response.swift in Sources */,
 				965972202B91E11D000D3070 /* JourneyGenieApp.swift in Sources */,
 			);
