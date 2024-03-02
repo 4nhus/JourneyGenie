@@ -1,0 +1,15 @@
+{
+    "morning": [
+        "8:00 AM - 9:30 AM: Breakfast at Bills in Darlinghurst - Enjoy delicious ricotta hotcakes or scrambled eggs while sipping on freshly brewed coffee.",
+        "10:00 AM - 12:00 PM: Explore the Art Gallery of New South Wales - Wander through the impressive collection of Australian and international art, including Aboriginal and Torres Strait Islander art."
+    ],
+    "afternoon": [
+        "12:30 PM - 2:00 PM: Lunch at The Grounds of Alexandria - Indulge in a hearty meal in a charming garden setting, with options ranging from wood-fired pizzas to gourmet burgers.",
+        "2:30 PM - 4:00 PM: Scenic ferry ride to Manly - Take a ferry from Circular Quay to Manly and enjoy panoramic views of Sydney Harbor. Once in Manly, stroll along the Corso or relax on the beach."
+    ],
+    "evening": [
+        "4:30 PM - 6:00 PM: Relaxing massage at The Langham Sydney's Day Spa - Treat yourself to a luxurious spa experience with a range of rejuvenating treatments.",
+        "6:30 PM - 8:00 PM: Dinner at Café Sydney - Dine alfresco on the rooftop terrace of Café Sydney, overlooking the Sydney Opera House and Harbor Bridge.",
+        "8:30 PM - 10:00 PM: Attend a performance at the Sydney Opera House - Experience a world-class performance at one of the most iconic venues in the world."
+    ]
+}

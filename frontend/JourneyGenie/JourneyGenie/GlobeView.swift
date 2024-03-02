@@ -50,6 +50,7 @@ struct GlobeView: UIViewRepresentable {
         Coordinator(self)
     }
     
+    // Closure to use coordinates from map tap
     var onTap: (CLLocationCoordinate2D) -> Void
 }
 
