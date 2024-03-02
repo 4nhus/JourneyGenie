@@ -3,9 +3,11 @@ import json
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def index():
     return 'Hello, World!'
+
 
 @app.route('/api/v1/journey', methods=['POST'])
 def journey():
@@ -19,8 +21,9 @@ def journey():
 
     with open("sample_journey.txt") as f:
         return jsonify(json.loads(f.read()))
-    
-    # return get_journey(latitude, longitude, date)
+
+    # return jsonify(get_journey(latitude, longitude, date))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
