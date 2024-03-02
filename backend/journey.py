@@ -14,7 +14,6 @@ def get_prompt(latitude: float, longitude: float, weather: str) -> str:
      {{ 'morning': [{{"start": string, "end": string, description: "string"}}], 'afternoon':  [{{"start": string, "end": string, description: "string"}}], 'evening':  [{{"start": string, "end": string, description: "string"}}] }}
     """
 
-
 def get_journey(latitude: float, longitude: float, date: int) -> str:
     load_dotenv()
     client = OpenAI()
