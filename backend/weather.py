@@ -42,6 +42,3 @@ def get_weather_str(latitude: float, longitude: float, date: int) -> str:
     print(json.dumps(result, indent=4))
 
     return result['days'][0]['description'].strip(". ").lower()
-
-if __name__ == '__main__':
-    print(get_weather_str(33.8688, 151.2093, 1710179980))
