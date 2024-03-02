@@ -6,7 +6,7 @@ def get_prompt(latitude: float, longitude: float, weather: str) -> str:
     return f"""I am planning to go to Latitude {latitude}, Longitude {longitude}, the weather will be {weather}.
     Get a 1 day itinerary including times and use real suggestions for places.
     Return me the output in this JSON schema
-    {{ 'morning': str[], 'afternoon': str[], 'evening': str[] }}
+     {{ 'morning': [{{"start": string, "end": string, description: "string"}}], 'afternoon':  [{{"start": string, "end": string, description: "string"}}], 'evening':  [{{"start": string, "end": string, description: "string"}}] }}
     """
 
 
@@ -25,4 +25,5 @@ def get_journey(latitude: float, longitude: float, date: int) -> str:
 
 
 if __name__ == '__main__':
-    print(get_journey(33, 151, 1234))
+    print(get_prompt(33, 151, 'raining'))
+   # print(get_journey(33, 151, 1234))
