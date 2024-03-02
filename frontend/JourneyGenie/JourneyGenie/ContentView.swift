@@ -20,7 +20,7 @@ struct ContentView: View {
     @State private var locationString = ""
     // Initialise to either user current location or (0, 0)
     @State private var request = Request(latitude: 0, longitude: 0, date: Date.now)
-    @State private var responses = [Response]()
+    @State private var itineraries = [Itinerary]()
     
     var body: some View {
         VStack {
@@ -66,7 +66,7 @@ struct ContentView: View {
             return
         }
         
-        let url = URL(string: "http://127.0.0.1:5000")!
+        let url = URL(string: "http://127.0.0.1:5000/api/v1/journey")!
         var httpRequest = URLRequest(url: url)
         httpRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         httpRequest.httpMethod = "POST"
@@ -75,8 +75,7 @@ struct ContentView: View {
             let (data, _) = try await URLSession.shared.upload(for: httpRequest, from: encoded)
             
             let decodedResponse = try JSONDecoder().decode(Response.self, from: data)
-            responses.append(decodedResponse)
-            print(decodedResponse)
+            itineraries.append(decodedResponse.convertToItinerary())
         } catch {
             // Handle failed request/response
         }
