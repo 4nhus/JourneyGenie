@@ -9,7 +9,9 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
-    @State private var itineraries = [Itinerary]()
+    static let itinerariesURL = URL.documentsDirectory.appending(path: "itineraries.json")
+    
+    @State private var itineraries = (try? JSONDecoder().decode([Itinerary].self, from: Data(contentsOf: itinerariesURL))) ?? [Itinerary]()
     @State private var currentTab = 0
     @Namespace private var namespace
     

@@ -28,7 +28,7 @@ struct ItinerariesView: View {
                     }
                 } else {
                     List {
-                        ForEach(itineraries) {itinerary in
+                        ForEach(itineraries.reversed()) {itinerary in
                             NavigationLink {
                                 ItineraryView(itinerary: itinerary)
                             } label: {

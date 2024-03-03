@@ -97,9 +97,14 @@ struct JourneyView: View {
             
             let decodedResponse = try JSONDecoder().decode(Response.self, from: data)
             itineraries.append(decodedResponse.convertToItineraryWithLocationAndDate(location: location, date: request.formattedDateString))
+            
+            // Save itineraries
+            let itinerariesData = try JSONEncoder().encode(itineraries)
+            try itinerariesData.write(to: ContentView.itinerariesURL, options: [.atomic, .completeFileProtection])
+            
             currentItinerary = itineraries.last
         } catch {
-            // Handle failed request/response
+            // Handle failed request/response, or failed encoding
         }
     }
 }
