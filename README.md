@@ -1,22 +1,30 @@
 # JourneyGenie
 
-## Backend
-1. Install `venv` using `pip3 install virtualenv`
-2. Run `cd backend && python3 -m venv venv`
-3. Run `source venv/bin/activate`
-4. Run `pip3 install -r requirements.txt`
-5. Create a `.env` file and define the OPENAI_API_KEY and WEATHER_API_KEY.
+JourneyGenie is a tool designed to take the stress and uncertainty out of your next holiday. 
+
+It helps travelers plan their next holiday by leveraging the latest AI technology to analyse a vast database of travel reviews, articles, and recommendations to suggest the best locations, attractions, restaurants, and accommodations tailored to the user's preferences. 
+
+Most importantly, the model will be supplemented with forecasted weather data to accurately suggest the most appropriate activities, ensuring that your itinerary is tailored to the prevailing weather conditions for an enjoyable and seamless travel experience.
+
+
+## Developement
+### Backend
+
+In the backend directory
+
+1. Run `python3 -m venv venv`
+2. Run `source venv/bin/activate`
+3. Run `pip3 install -r requirements.txt`
+4. Create a `.env` file and define the OPENAI_API_KEY and WEATHER_API_KEY.
     - We used [OpenAI ](https://platform.openai.com/) for the OPENAI_API_KEY, and [Visual Crossing](https://www.visualcrossing.com/weather-api) for the WEATHER_API_KEY.
     - Add `OPENAI_API_KEY={key}` and `WEATHER_API_KEY={key}` to the `.env` file.
-6. Run `python3 -m app`
+5. Run `python3 -m app`
 
 Then, send requests to `http://127.0.0.1:5000`.
 
-### Adding new libraries to `venv`
-1. Run the virtual environment using steps 1-3 above.
-2. Run `pip3 install {package_name}`
-3. When done, run `pip3 freeze > requirements.txt` 
+### Frontend
 
-### Saving OpenAI tokens
-1. Go to `journey.py` and modify `lat`, `long` and `time` according to the desired query.
-2. Chuck the prompt into ChatGPT.
+## API Usage
+
+- [OpenAI](https://platform.openai.com/) model `GPT-3.5-turbo`
+- [Visual Crossing](https://www.visualcrossing.com/weather-api)

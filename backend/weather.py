@@ -37,7 +37,7 @@ def get_weather_str(latitude: float, longitude: float, date: int) -> str:
 
     result = json.loads(response.data.decode('utf-8'))
 
-    # debugging logs
+    # logging
     print('weather api response: ')
     print(json.dumps(result, indent=4))
 
