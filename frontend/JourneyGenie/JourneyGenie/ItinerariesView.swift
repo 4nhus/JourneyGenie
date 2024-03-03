@@ -9,35 +9,42 @@ import SwiftUI
 
 struct ItinerariesView: View {
     @Binding var itineraries: [Itinerary]
+    @Binding var currentTab: Int
     
     var body: some View {
         NavigationStack {
-            if (itineraries.isEmpty) {
-                ContentUnavailableView {
-                    Label("List of itineraries empty", systemImage: "tray")
-                } actions: {
-                    Button("Create a new itinerary") {
-                        // Change tab in tabview
-                    }
-                    .buttonStyle(.borderedProminent)
-                }
-            } else {
-                List {
-                    ForEach(itineraries) {itinerary in
-                        NavigationLink {
-                            ItineraryView(itinerary: itinerary)
-                        } label: {
-                            Text("Itinerary")
+            Group {
+                if (itineraries.isEmpty) {
+                    ContentUnavailableView {
+                        Label("No itineraries", systemImage: "tray")
+                    } description: {
+                        // Insert copy here
+                        Text("")
+                    } actions: {
+                        Button("Create new itinerary") {
+                            currentTab = 0
                         }
+                        .buttonStyle(.borderedProminent)
                     }
-                    .onDelete(perform: { indexSet in
-                        itineraries.remove(atOffsets: indexSet)
-                    })
-                }
-                .toolbar {
-                    EditButton()
+                } else {
+                    List {
+                        ForEach(itineraries) {itinerary in
+                            NavigationLink {
+                                ItineraryView(itinerary: itinerary)
+                            } label: {
+                                Text("Itinerary")
+                            }
+                        }
+                        .onDelete(perform: { indexSet in
+                            itineraries.remove(atOffsets: indexSet)
+                        })
+                    }
+                    .toolbar {
+                        EditButton()
+                    }
                 }
             }
+            .navigationTitle("Itineraries")
         }
     }
 }

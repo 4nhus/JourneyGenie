@@ -25,29 +25,33 @@ struct JourneyView: View {
     @State private var currentItinerary: Itinerary?
     
     var body: some View {
-        ZStack {
-            GlobeView { coordinate in
-                print("Map tapped at coordinate: \(coordinate.latitude), \(coordinate.longitude)")
-                request.latitude = coordinate.latitude
-                request.longitude = coordinate.longitude
-                reverseGeocode()
-            }
-            .edgesIgnoringSafeArea(.all)
-            
-            VStack {
-                VStack {
-                    TextField("Location", text: $locationString)
-                    DatePicker("Trip date", selection: $request.date, in: Date.now..., displayedComponents: .date)
-                    Button("Plan my trip!") {
-                        Task {
-                            await sendRequest()
-                        }
-                    }
-                    
+        NavigationStack {
+            ZStack {
+                GlobeView { coordinate in
+                    print("Map tapped at coordinate: \(coordinate.latitude), \(coordinate.longitude)")
+                    request.latitude = coordinate.latitude
+                    request.longitude = coordinate.longitude
+                    reverseGeocode()
                 }
-                .background(.regularMaterial)
-                Spacer()
+                .edgesIgnoringSafeArea(.all)
+                
+                VStack {
+                    VStack(spacing: 10) {
+                        TextField("Location", text: $locationString)
+                        DatePicker("Trip date", selection: $request.date, in: Date.now..., displayedComponents: .date)
+                        Button("Grant me an itinerary!") {
+                            Task {
+                                await sendRequest()
+                            }
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
+                    .padding()
+                    .background(.ultraThinMaterial)
+                    Spacer()
+                }
             }
+            .navigationTitle("JourneyGenie")
         }
         .sheet(item: $currentItinerary) { itinerary in
             ItineraryView(itinerary: itinerary)

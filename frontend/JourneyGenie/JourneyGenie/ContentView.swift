@@ -10,27 +10,53 @@ import MapKit
 
 struct ContentView: View {
     @State private var itineraries = [Itinerary]()
+    @State private var currentTab = 0
+    @Namespace private var namespace
     
     var body: some View {
-        TabView {
-            Group {
+        ZStack(alignment: .bottom) {
+            TabView(selection: $currentTab) {
                 JourneyView(itineraries: $itineraries)
-                    .tabItem {
-                        Label("Journey", systemImage: "airplane.departure")
-                    }
-                ItinerariesView(itineraries: $itineraries)
-                    .tabItem {
-                        Label("Itineraries", systemImage: "list.bullet")
-                    }
+                    .tag(0)
+                
+                ItinerariesView(itineraries: $itineraries, currentTab: $currentTab)
+                    .tag(1)
             }
-            .toolbarBackground(.visible, for: .tabBar)
-            .toolbarColorScheme(.dark, for: .tabBar)
+            
+            HStack {
+                NavigationTabItem(tab: 0) {
+                    Label("Journey", systemImage: "airplane.departure")
+                }
+                NavigationTabItem(tab: 1) {
+                    Label("Itineraries", systemImage: "list.bullet")
+                }
+            }
+            .background(.ultraThinMaterial)
         }
         .preferredColorScheme(.dark)
     }
     
-    
-    
+    func NavigationTabItem<Label: View>(tab: Int, @ViewBuilder label: () -> Label) -> some View {
+        Button {
+            currentTab = tab
+        } label: {
+            VStack {
+                if currentTab == tab {
+                    label()
+                        .bold()
+                    Color.white.frame(height: 2)
+                        .matchedGeometryEffect(id: "underline", in: namespace, properties: .frame)
+                } else {
+                    label()
+                        .fontWeight(.light)
+                    Color.clear.frame(height: 2)
+                }
+            }
+            .padding(.top)
+            .animation(.spring(), value: currentTab)
+        }
+        .buttonStyle(.plain)
+    }
 }
 
 #Preview {
