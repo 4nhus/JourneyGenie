@@ -12,26 +12,19 @@ struct ItineraryView: View {
     
     var body: some View {
         List {
-            // Change format and refactor duplication
             Section("Morning") {
-                ForEach(itinerary.morning, id: \.description) { itineraryItem in
-                    Text("Start: \(itineraryItem.start)")
-                    Text("End: \(itineraryItem.end)")
-                    Text("Description: \(itineraryItem.description)")
+                ForEach(itinerary.morning, id: \.description) {
+                    ItineraryItemView(itineraryItem: $0)
                 }
             }
             Section("Afternoon") {
-                ForEach(itinerary.afternoon, id: \.description) { itineraryItem in
-                    Text("Start: \(itineraryItem.start)")
-                    Text("End: \(itineraryItem.end)")
-                    Text("Description: \(itineraryItem.description)")
+                ForEach(itinerary.afternoon, id: \.description) {
+                    ItineraryItemView(itineraryItem: $0)
                 }
             }
             Section("Evening") {
-                ForEach(itinerary.evening, id: \.description) { itineraryItem in
-                    Text("Start: \(itineraryItem.start)")
-                    Text("End: \(itineraryItem.end)")
-                    Text("Description: \(itineraryItem.description)")
+                ForEach(itinerary.evening, id: \.description) {
+                    ItineraryItemView(itineraryItem: $0)
                 }
             }
         }

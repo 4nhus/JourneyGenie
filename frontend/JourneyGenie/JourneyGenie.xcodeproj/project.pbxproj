@@ -19,7 +19,7 @@
 		9659723E2B92DC56000D3070 /* ItinerariesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9659723D2B92DC56000D3070 /* ItinerariesView.swift */; };
 		965972402B92DC7D000D3070 /* ItineraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9659723F2B92DC7D000D3070 /* ItineraryView.swift */; };
 		965972422B92E03A000D3070 /* JourneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965972412B92E03A000D3070 /* JourneyView.swift */; };
-		965972482B941569000D3070 /* NavigationBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965972472B941569000D3070 /* NavigationBarItem.swift */; };
+		9659724A2B942829000D3070 /* ItineraryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965972492B942829000D3070 /* ItineraryItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +36,7 @@
 		9659723D2B92DC56000D3070 /* ItinerariesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItinerariesView.swift; sourceTree = "<group>"; };
 		9659723F2B92DC7D000D3070 /* ItineraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryView.swift; sourceTree = "<group>"; };
 		965972412B92E03A000D3070 /* JourneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyView.swift; sourceTree = "<group>"; };
-		965972472B941569000D3070 /* NavigationBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarItem.swift; sourceTree = "<group>"; };
+		965972492B942829000D3070 /* ItineraryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +53,6 @@
 		965972132B91E11D000D3070 = {
 			isa = PBXGroup;
 			children = (
-				965972472B941569000D3070 /* NavigationBarItem.swift */,
 				9659721E2B91E11D000D3070 /* JourneyGenie */,
 				9659721D2B91E11D000D3070 /* Products */,
 			);
@@ -70,6 +69,7 @@
 		9659721E2B91E11D000D3070 /* JourneyGenie */ = {
 			isa = PBXGroup;
 			children = (
+				965972492B942829000D3070 /* ItineraryItemView.swift */,
 				965972352B92C570000D3070 /* GlobeView.swift */,
 				965972342B92C570000D3070 /* Request.swift */,
 				965972332B92C570000D3070 /* Response.swift */,
@@ -171,7 +171,7 @@
 				965972372B92C570000D3070 /* Request.swift in Sources */,
 				965972402B92DC7D000D3070 /* ItineraryView.swift in Sources */,
 				965972382B92C570000D3070 /* GlobeView.swift in Sources */,
-				965972482B941569000D3070 /* NavigationBarItem.swift in Sources */,
+				9659724A2B942829000D3070 /* ItineraryItemView.swift in Sources */,
 				965972422B92E03A000D3070 /* JourneyView.swift in Sources */,
 				965972362B92C570000D3070 /* Response.swift in Sources */,
 				965972202B91E11D000D3070 /* JourneyGenieApp.swift in Sources */,
