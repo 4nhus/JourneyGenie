@@ -19,12 +19,33 @@ class Coordinator: NSObject, MKMapViewDelegate {
         let location = recognizer.location(in: recognizer.view as? MKMapView)
         if let mapView = recognizer.view as? MKMapView {
             let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            parent.annotations.removeAll()
+            parent.annotations.append(annotation)
             parent.onTap(coordinate)
         }
+    }
+    
+    // Custom annotation
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let identifier = "CustomAnnotation"
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        
+        annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        
+        (annotationView as? MKMarkerAnnotationView)?.glyphTintColor = .white
+        (annotationView as? MKMarkerAnnotationView)?.markerTintColor = .systemBlue
+        (annotationView as? MKMarkerAnnotationView)?.glyphImage = UIImage(systemName: "airplane.departure")
+        
+        return annotationView
     }
 }
 
 struct GlobeView: UIViewRepresentable {
+    @Binding var annotations: [MKPointAnnotation]
+    
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
@@ -38,12 +59,14 @@ struct GlobeView: UIViewRepresentable {
         mapView.camera = camera
         
         let tapRecognizer = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.mapTapped(_:)))
-                mapView.addGestureRecognizer(tapRecognizer)
+        mapView.addGestureRecognizer(tapRecognizer)
         
         return mapView
     }
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
+        uiView.removeAnnotations(uiView.annotations)
+        uiView.addAnnotations(annotations)
     }
     
     func makeCoordinator() -> Coordinator {
@@ -52,12 +75,4 @@ struct GlobeView: UIViewRepresentable {
     
     // Closure to use coordinates from map tap
     var onTap: (CLLocationCoordinate2D) -> Void
-}
-
-
-
-#Preview {
-    GlobeView { coordinate in
-        print("Map tapped at coordinate: \(coordinate.latitude), \(coordinate.longitude)")
-    }
 }
