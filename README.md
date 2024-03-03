@@ -24,6 +24,14 @@ Then, send requests to `http://127.0.0.1:5000`.
 
 ### Frontend
 
+In the frontend directory
+
+1. Launch `Xcode`
+2. Select `Open Existing Project...`
+3. From the root directory of the repository, open `/frontend/JourneyGenie`
+4. Run the project by pressing `Cmd+R` or from the play button in the top left corner, above the project navigator.
+5. Use the app via the simulator - the pinch to zoom gesture on the map can be replicated by holding option then dragging the mouse
+
 ## API Usage
 
 - [OpenAI](https://platform.openai.com/) model `GPT-3.5-turbo`
