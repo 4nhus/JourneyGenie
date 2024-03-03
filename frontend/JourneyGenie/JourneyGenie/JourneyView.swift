@@ -23,11 +23,12 @@ struct JourneyView: View {
     @State private var showingItinerary = false
     @Binding var itineraries: [Itinerary]
     @State private var currentItinerary: Itinerary?
+    @State private var annotations = [MKPointAnnotation]()
     
     var body: some View {
         NavigationStack {
             ZStack {
-                GlobeView { coordinate in
+                GlobeView(annotations: $annotations) { coordinate in
                     print("Map tapped at coordinate: \(coordinate.latitude), \(coordinate.longitude)")
                     request.latitude = coordinate.latitude
                     request.longitude = coordinate.longitude
