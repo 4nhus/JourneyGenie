@@ -17,13 +17,19 @@ extension String {
 struct JourneyView: View {
     let geocoder = CLGeocoder()
     
-    @State private var locationString = ""
+    @State private var locationString: String = ""
     // Initialise to either user current location or (0, 0)
     @State private var request = Request(latitude: 0, longitude: 0, date: Date.now)
     @State private var showingItinerary = false
     @Binding var itineraries: [Itinerary]
     @State private var currentItinerary: Itinerary?
-    @State private var annotations = [MKPointAnnotation]()
+    @State private var annotations: [MKPointAnnotation] = {
+        var annotations = [MKPointAnnotation]()
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+        annotations.append(annotation)
+        return annotations
+    }()
     
     var body: some View {
         NavigationStack {
@@ -46,7 +52,6 @@ struct JourneyView: View {
                             }
                         }
                         .buttonStyle(.borderedProminent)
-                        .disabled(locationString.isEmpty)
                     }
                     .padding()
                     .background(.ultraThinMaterial)
@@ -61,6 +66,9 @@ struct JourneyView: View {
                 .bold()
                 .padding(.top)
             ItineraryView(itinerary: itinerary)
+        }
+        .onAppear {
+            reverseGeocode()
         }
     }
     
