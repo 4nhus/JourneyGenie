@@ -9,7 +9,6 @@ app = Flask(__name__)
 def index():
     return 'Hello, World!'
 
-# Uncomment the get_journey call and comment the with open() block to actually use openAI api.
 @app.route('/api/v1/journey', methods=['POST'])
 def journey():
     data = request.json
@@ -18,14 +17,12 @@ def journey():
     longitude = data.get('longitude')
     date = data.get('date')
 
+    # logging
     print(f"Lat: {latitude} Long: {longitude} Date: {date}")
 
-    with open("sample_journey.txt") as f:
-        return jsonify(json.loads(f.read()))
-
-    # res = get_journey(latitude, longitude, date)
-    # print(res)
-    # return res
+    res = get_journey(latitude, longitude, date)
+    print(res)
+    return res
 
 
 if __name__ == '__main__':
