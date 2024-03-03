@@ -30,6 +30,7 @@ struct JourneyView: View {
         annotations.append(annotation)
         return annotations
     }()
+    @State private var areInstructionsShowing = true
     
     var body: some View {
         NavigationStack {
@@ -43,9 +44,21 @@ struct JourneyView: View {
                 .edgesIgnoringSafeArea(.all)
                 
                 VStack {
+                    Text("")
                     VStack(spacing: 10) {
-                        TextField("Location", text: $locationString)
-                        DatePicker("Trip date", selection: $request.date, in: Date.now..., displayedComponents: .date)
+                        HStack {
+                            Text("Destination:")
+                                .bold()
+                            Text(locationString)
+                        }
+                        HStack {
+                            Text("Journey date:")
+                                .bold()
+                                .accessibilityHidden(true)
+                            DatePicker("Journey date", selection: $request.date, in: Date.now..., displayedComponents: .date)
+                                .labelsHidden()
+                        }
+                        .padding(.bottom)
                         Button("Grant me an itinerary!") {
                             Task {
                                 await sendRequest()
@@ -54,7 +67,8 @@ struct JourneyView: View {
                         .buttonStyle(.borderedProminent)
                     }
                     .padding()
-                    .background(.ultraThinMaterial)
+                    .background( .ultraThinMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
                     Spacer()
                 }
             }
@@ -67,6 +81,21 @@ struct JourneyView: View {
                 .padding(.top)
             ItineraryView(itinerary: itinerary)
         }
+        .alert("Instructions", isPresented: $areInstructionsShowing) {
+            
+        } message: {
+            Text("Select your destination by tapping on the map, then select the date for your journey. Our genie will handle everything after you request an itinerary!")
+        }
+        /*
+        .toolbar {
+            EditButton()
+            Button {
+                areInstructionsShowing = true
+            } label: {
+                Label("Help", systemImage: "questionmark.circle")
+            }
+        }
+         */
         .onAppear {
             reverseGeocode()
         }
