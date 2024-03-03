@@ -12,6 +12,9 @@ struct ItineraryView: View {
     
     var body: some View {
         List {
+            Section("Date") {
+                Text(itinerary.date)
+            }
             Section("Morning") {
                 ForEach(itinerary.morning, id: \.description) {
                     ItineraryItemView(itineraryItem: $0)
@@ -28,5 +31,7 @@ struct ItineraryView: View {
                 }
             }
         }
+        .navigationTitle(itinerary.location)
     }
 }
+    

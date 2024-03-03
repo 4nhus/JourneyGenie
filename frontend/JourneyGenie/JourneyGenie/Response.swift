@@ -12,7 +12,7 @@ struct Response: Codable {
     let afternoon: [ItineraryItem]
     let evening: [ItineraryItem]
     
-    func convertToItinerary() -> Itinerary {
-        Itinerary(morning: morning, afternoon: afternoon, evening: evening)
+    func convertToItineraryWithLocationAndDate(location: String, date: String) -> Itinerary {
+        Itinerary(morning: morning, afternoon: afternoon, evening: evening, location: location, date: date)
     }
 }

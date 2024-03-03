@@ -32,7 +32,7 @@ struct ItinerariesView: View {
                             NavigationLink {
                                 ItineraryView(itinerary: itinerary)
                             } label: {
-                                Text("Itinerary")
+                                Text("\(itinerary.location) - \(itinerary.date)")
                             }
                         }
                         .onDelete(perform: { indexSet in

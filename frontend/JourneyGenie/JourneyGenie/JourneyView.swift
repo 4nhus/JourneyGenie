@@ -45,6 +45,7 @@ struct JourneyView: View {
                             }
                         }
                         .buttonStyle(.borderedProminent)
+                        .disabled(locationString.isEmpty)
                     }
                     .padding()
                     .background(.ultraThinMaterial)
@@ -54,6 +55,10 @@ struct JourneyView: View {
             .navigationTitle("JourneyGenie")
         }
         .sheet(item: $currentItinerary) { itinerary in
+            Text(itinerary.location)
+                .font(.title)
+                .bold()
+                .padding(.top)
             ItineraryView(itinerary: itinerary)
         }
     }
@@ -71,8 +76,7 @@ struct JourneyView: View {
                 return
             }
             
-            // Only allow locality or sublocality
-            locationString = placemark.name!.isInt ? placemark.locality! : placemark.name!
+            locationString = placemark.locality ?? placemark.name!
         }
     }
     
@@ -82,6 +86,7 @@ struct JourneyView: View {
             return
         }
         
+        let location = locationString
         let url = URL(string: "http://127.0.0.1:5000/api/v1/journey")!
         var httpRequest = URLRequest(url: url)
         httpRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -91,7 +96,7 @@ struct JourneyView: View {
             let (data, _) = try await URLSession.shared.upload(for: httpRequest, from: encoded)
             
             let decodedResponse = try JSONDecoder().decode(Response.self, from: data)
-            itineraries.append(decodedResponse.convertToItinerary())
+            itineraries.append(decodedResponse.convertToItineraryWithLocationAndDate(location: location, date: request.formattedDateString))
             currentItinerary = itineraries.last
         } catch {
             // Handle failed request/response

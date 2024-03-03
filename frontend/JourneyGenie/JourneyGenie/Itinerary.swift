@@ -12,4 +12,6 @@ struct Itinerary: Identifiable {
     let morning: [ItineraryItem]
     let afternoon: [ItineraryItem]
     let evening: [ItineraryItem]
+    let location: String
+    let date: String
 }
